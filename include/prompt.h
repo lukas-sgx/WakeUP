@@ -1,1 +1,1 @@
-void prompt(char *buffer);
+int prompt(char *buffer);

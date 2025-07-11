@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "include/color.h"
 
-void prompt(char *buffer){
+int prompt(char *buffer){
     size_t size = 0;
     __ssize_t reader = 0;
 
@@ -9,4 +10,10 @@ void prompt(char *buffer){
     printf("$ ");
     Default();
     reader = getline(&buffer, &size, stdin);
+
+    if (reader < 1){
+        return EXIT_FAILURE;
+    }else{
+        return EXIT_SUCCESS;
+    }
 }

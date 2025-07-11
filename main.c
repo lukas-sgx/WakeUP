@@ -8,7 +8,11 @@ int main(int argc, char const *argv[])
 
     while (1)
     {
-        prompt(buffer);
+        int success = prompt(buffer);
+
+        if(success){
+            break;
+        }
     }
     
     return 0;
