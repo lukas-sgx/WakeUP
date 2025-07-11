@@ -1,25 +1,50 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "include/color.h"
 
-void init() {
+void show_cow_frame(int frame) {
     CLEAR_SCREEN();
-    Green();
-    printf("        (__)\n"
-           "        (oo)\\_______\n"
-           "        (__)\\       )\\/\\\n"
-           "            ||----w |\n"
-           "            ||     ||\n"
-           "      >> WakeUP - Shell <<\n\n");
+    if (frame % 2 == 0) {
+        Purple();
+        printf("        (__)\n"
+               "        (oo)\\_______\n"
+               "        (__)\\       )\\/\\\n"
+               "            ||----w |\n"
+               "            ||     ||\n");
+        Green();               
+        printf("      >> WakeUP - Shell <<\n\n");
+    } else {
+        Purple();
+        printf("        (__)\n"
+               "        (");
+        Red();
+        printf("oo");
+        Purple();
+        printf(")\\_______\n"
+               "        (__)\\       )\\/\\\n"
+               "            ||----w |\n"
+               "            ||     ||\n");
+        Green();
+        printf("      >> WakeUP - Shell <<\n\n");
+    }
+}
+
+void init(){
+    for (int i = 0; i < 6; ++i) {
+        show_cow_frame(i);
+        usleep(300000);
+    }
 }
 
 int prompt(char **buffer){
     size_t size = 0;
-    __ssize_t reader = 0;
+    ssize_t reader = 0;
 
     Purple();
     printf("$ ");
     Default();
+
     reader = getline(buffer, &size, stdin);
 
     if (reader < 1){

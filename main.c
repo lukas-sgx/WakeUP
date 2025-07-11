@@ -10,19 +10,20 @@
 int main(int argc, char const *argv[])
 {
     char *buffer = malloc(MAX_SIZE);
+    int success;
 
     init();
 
     while (1)
     {
-        int success = prompt(&buffer);
+        success = prompt(&buffer);
         CHECK();
 
         success = execCLI(buffer);
         CHECK();
-
     }
     
     free(buffer);
+    
     return 0;
 }
