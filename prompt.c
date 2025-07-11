@@ -5,13 +5,14 @@
 void init() {
     CLEAR_SCREEN();
     Green();
-    printf("        _     _\n"
-        "       / \\   / \\\n"
-        "      /   \\_/   \\\n"
-        "     (   /   \\   )\n"
-        "      \\__     __/\n"
-        "        \\_____/\n\n"
-        "     >> Shell C <<\n\n");
+    printf("        (__)\n"
+    "        (oo)\\_______\n"
+    "        (__)\\       )\\/\\\n"
+    "            ||----w |\n"
+    "            ||     ||\n"
+    "      >> WakeUP - Shell <<\n\n");
+
+
 }
 
 int prompt(char *buffer){
