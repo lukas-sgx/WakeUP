@@ -1,4 +1,4 @@
-# Shell Emulator
+# WakeUP - Shell
 
 Un émulateur de shell interactif écrit en C permettant d'exécuter des commandes.
 
@@ -13,8 +13,8 @@ Un émulateur de shell interactif écrit en C permettant d'exécuter des command
 
 1. Clonez le dépôt :
    ```bash
-   git clone https://github.com/votre-utilisateur/shell-emulator.git
-   cd shell-emulator
+   git clone https://github.com/lukas-sgx/WakeUP.git
+   cd WakeUP
    ```
 
 ## Utilisation
@@ -35,18 +35,9 @@ make build
 $ ls
 src  package.json  README.md
 $ cd src
-$ echo "Bienvenue dans le shell-emulator!"
-Bienvenue dans le shell-emulator!
+$ echo "Bienvenue dans le WakeUP - Shell!"
+Bienvenue dans WakeUP - Shell!
 ```
-
-## Contribution
-
-Les contributions sont les bienvenues !
-- Forkez le projet
-- Créez une branche (`git checkout -b feature/ma-nouvelle-fonctionnalite`)
-- Commitez vos modifications (`git commit -am 'Ajout d'une nouvelle fonctionnalité'`)
-- Poussez la branche (`git push origin feature/ma-nouvelle-fonctionnalite`)
-- Ouvrez une Pull Request
 
 ## Licence
 
