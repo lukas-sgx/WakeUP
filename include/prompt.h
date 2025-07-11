@@ -1,2 +1,2 @@
 void init();
-int prompt(char *buffer);
+int prompt(char **buffer);

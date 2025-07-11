@@ -1,5 +1,5 @@
 CC = @echo "🐮 Compiling WakeUP" && gcc
-DEP = main.c prompt.c
+DEP = main.c prompt.c task.c
 OUTPUT = WakeUP
 LAUNCH = @echo "Lauch WakeUP - Shell" && ./WakeUP
 
