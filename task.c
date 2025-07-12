@@ -12,12 +12,10 @@ int exist(const char *name){
     directory = opendir(name);
     
     if(directory == NULL){
-        closedir(directory);
         return EXIT_FAILURE;
-    }else{
-        closedir(directory);
-        return EXIT_SUCCESS;
     }
+    closedir(directory);
+    return EXIT_SUCCESS;
 }
 
 int execCLI(char *buffer){
@@ -25,6 +23,11 @@ int execCLI(char *buffer){
     int i = 0;
 
     char *token = strtok(buffer, " \n");
+
+    if (token == NULL) {
+        return EXIT_SUCCESS;
+    }
+
     while (token != NULL && i < 63) {
         if(strcmp(token, "exit") == 0){
             return EXIT_FAILURE;
