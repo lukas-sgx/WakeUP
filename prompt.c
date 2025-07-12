@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 #include "include/color.h"
 
 void show_cow_frame(int frame) {
@@ -38,9 +39,18 @@ void init(){
 }
 
 int prompt(char **buffer){
+
+    char cwd[128];
+    char *currentDir;
+
     size_t size = 0;
     ssize_t reader = 0;
 
+    Default();
+    getcwd(cwd, sizeof(cwd));
+    currentDir = strrchr(cwd, '/');
+    currentDir++;
+    printf("%s ", currentDir);
     Purple();
     printf("$ ");
     Default();

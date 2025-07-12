@@ -25,5 +25,5 @@ int main(int argc, char const *argv[])
     
     free(buffer);
     
-    return 0;
+    return EXIT_SUCCESS;
 }
