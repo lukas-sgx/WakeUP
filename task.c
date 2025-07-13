@@ -3,19 +3,22 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <dirent.h>
 #include "include/color.h"
 
-int exist(const char *name){
-    DIR *directory;
-    
-    directory = opendir(name);
-    
-    if(directory == NULL){
+int exist(const char *path){
+    struct stat st;
+    if (stat(path, &st) == -1)
         return EXIT_FAILURE;
-    }
-    closedir(directory);
-    return EXIT_SUCCESS;
+
+    if (S_ISREG(st.st_mode))
+        return 2;
+    else if (S_ISDIR(st.st_mode))
+        return EXIT_SUCCESS;
+    else
+        return 3;
 }
 
 int execCLI(char *buffer){
@@ -41,16 +44,27 @@ int execCLI(char *buffer){
     if(strcmp(args[0], "cd") == 0){
         int success = exist(args[1]);
         
-        if(success == EXIT_SUCCESS){
+        if(success == 0){
             chdir(args[1]);
-        }else{
+        }else if(success == 1){
             Red();
             printf("Le dossier n'existe pas\n");
+        }else if(success == 2){
+            Red();
+            printf("%s est un fichier\n", args[1]);
+        }else if(success == 3){
+            Red();
+            printf("%s est un fichier\n", args[1]);
         }
     }else{
         __pid_t pid = fork();
 
         if(pid == 0){
+            if(strcmp(args[0], "ls") == 0){
+                args[i] = "--color=auto";
+                args[i+1] = NULL;
+            }
+            
             execvp(args[0], args);
         }else if(pid > 0){
             int status;
