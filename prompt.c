@@ -49,7 +49,9 @@ int prompt(char **buffer){
     Default();
     getcwd(cwd, sizeof(cwd));
     currentDir = strrchr(cwd, '/');
-    currentDir++;
+    if(strcmp(currentDir, "/")){
+        currentDir++;
+    }
     printf("%s ", currentDir);
     Purple();
     printf("$ ");

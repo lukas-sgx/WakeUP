@@ -39,6 +39,7 @@ int execCLI(char *buffer){
         args[i++] = token;
         token = strtok(NULL, " \n");
     }
+
     args[i] = NULL;
 
     if(strcmp(args[0], "cd") == 0){
